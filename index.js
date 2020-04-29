@@ -42,7 +42,7 @@ app.post('/data', function (req, res) {
                         console.error(error)
                     });
                     source.on('end', end =>{
-                        callback(null,body)
+                        callback(null,JSON.parse(body))
 
                     });
                 });
@@ -60,7 +60,7 @@ app.post('/data', function (req, res) {
                         console.error(error)
                     });
                     backup.on('end', end =>{
-                        callback(null,body)
+                        callback(null,JSON.parse(body))
                     });
 
                 });
