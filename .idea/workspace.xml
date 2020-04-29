@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="" />
+    <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/pryv-http-api-exercise" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +28,7 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="1b7Yy7HGNRDW0tG0ff3wO3126y3" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -74,11 +78,22 @@
       <updated>1587984850939</updated>
       <workItem from="1587984852229" duration="12560000" />
       <workItem from="1588000564255" duration="2482000" />
-      <workItem from="1588006164191" duration="4388000" />
+      <workItem from="1588006164191" duration="5288000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
