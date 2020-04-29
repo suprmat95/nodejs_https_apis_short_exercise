@@ -10,7 +10,7 @@ var port = 1234;
 app.get("/", function(req, res){
     res.send("It works!");
 });
-
+var result = ' ';
 app.post('/data', function (req, res) {
     var sourceUsername = req.body.source.username;
     var sourceToken = req.body.source.token;
@@ -36,44 +36,37 @@ app.post('/data', function (req, res) {
     var sourceStreams;
     var backupStreams;
     console.log('CIAO');
-    https.get(sourceOptions, res =>{
+    https.get(sourceOptions, source =>{
         var body = ' ';
-        console.log(`statusCode: ${res.statusCode}`);
+        console.log(`statusCode: ${source.statusCode}`);
 
-        res.on('data', d1 => {
+        source.on('data', d1 => {
             body += d1;
-            process.stdout.write(d1)
+           // process.stdout.write(d1)
         });
-        res.on('error', error => {
+        source.on('error', error => {
             console.error(error)
         });
-        res.on('end', end =>{
-            console.log('\nPrimo end\n')
+        source.on('end', end =>{
             sourceStreams = JSON.parse(body);
-            https.get(backupOptions, res =>{
+            https.get(backupOptions, backup =>{
                 var body = ' ';
-                console.log(`statusCode: ${res.statusCode}`);
+                console.log(`statusCode: ${backup.statusCode}`);
 
-                res.on('data', d1 => {
+                backup.on('data', d1 => {
                     body += d1;
-                    process.stdout.write(d1)
+               //     process.stdout.write(d1)
                 });
-                res.on('error', error => {
+                backup.on('error', error => {
                     console.error(error)
                 });
-                res.on('end', end =>{
-                    console.log('\nsecondo end\n')
-
+                backup.on('end', end =>{
                     backupStreams = JSON.parse(body);
-                    var json =JSON.stringify( {
+                    var json = JSON.stringify( {
                         "streamId": "a",
                         "type": "exercise-1/streams",
                         "content": [ JSON.stringify(sourceStreams.streams) + "," + JSON.stringify(backupStreams.streams)]
                     });
-                    console.log('Streams\n');
-                    console.log(sourceStreams.streams.children)
-                    console.log('Json: \n');
-                    console.log(json)
                     var postOptions = {
                         method: 'POST',
                         host: backupUsername+".pryv.me",
@@ -86,31 +79,30 @@ app.post('/data', function (req, res) {
                         auth: backupToken,
 
                     };
-                    var req = https.request(postOptions, res =>{
-                        console.log('\nSto facendo la post\n')
-                        var body = ' ';
-                        console.log(`statusCode: ${res.statusCode}`);
+                    var req = https.request(postOptions, post =>{
+                        console.log(`statusCode: ${post.statusCode}`);
 
-                        res.on('data', d1 => {
-                            process.stdout.write(d1)
+                        post.on('data', d1 => {
+                            console.log('DATA');
+                            res.send(d1);
+                            result += d1;
                         });
-                        res.on('error', error => {
-                            console.log('\nERROORREEEE')
+                        post.on('error', error => {
                             console.error(error)
                         });
-                        res.on('end', end => {
+                        post.on('end', end => {
                             console.log(end)
                         });
                     });
                     req.write(json);
                     req.end();
-
                 });
+
             });
         });
     });
+    console.log('result');
 
-    res.send(req.body);
 
 });
 
