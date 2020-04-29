@@ -4,6 +4,8 @@
     <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -78,8 +80,16 @@
       <updated>1587984850939</updated>
       <workItem from="1587984852229" duration="12560000" />
       <workItem from="1588000564255" duration="2482000" />
-      <workItem from="1588006164191" duration="8399000" />
+      <workItem from="1588006164191" duration="10870000" />
     </task>
+    <task id="LOCAL-00001" summary="added response to caller">
+      <created>1588179766632</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1588179766633</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,5 +105,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added response to caller" />
+    <option name="LAST_COMMIT_MESSAGE" value="added response to caller" />
   </component>
 </project>
