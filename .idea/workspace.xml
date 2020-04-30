@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/test/api/post.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/api/post.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/api/post.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -121,7 +121,7 @@
       <workItem from="1588000564255" duration="2482000" />
       <workItem from="1588006164191" duration="12182000" />
       <workItem from="1588195088600" duration="1000" />
-      <workItem from="1588262061033" duration="3669000" />
+      <workItem from="1588262061033" duration="10208000" />
     </task>
     <task id="LOCAL-00001" summary="added response to caller">
       <created>1588179766632</created>
@@ -144,7 +144,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588183090845</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="wrote a test">
+      <created>1588266098463</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1588266098464</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +174,7 @@
     <MESSAGE value="added response to caller" />
     <MESSAGE value="Used async Parallel" />
     <MESSAGE value="bug fix json parsing streams" />
-    <option name="LAST_COMMIT_MESSAGE" value="bug fix json parsing streams" />
+    <MESSAGE value="wrote a test" />
+    <option name="LAST_COMMIT_MESSAGE" value="wrote a test" />
   </component>
 </project>

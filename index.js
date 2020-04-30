@@ -11,12 +11,12 @@ const PORT = 1234;
 
 app.listen(PORT, (err) => {
     if (err) console.error(' Unable to connect the server: ', err);
-    console.log("Listening on port " + PORT);
+  //  console.log("Listening on port " + PORT);
 });
 
  app.post('/data', function (req, res) {
 
-     console.log(req);
+    // console.log(req);
     var sourceUsername = req.body.source.username;
     var sourceToken = req.body.source.token;
     var backupUsername = req.body.backup.username;
@@ -37,14 +37,16 @@ app.listen(PORT, (err) => {
             function(callback) {
                 https.get(sourceOptions, source =>{
                     var body = ' ';
-                    console.log(`statusCode: ${source.statusCode}`);
+                  //  console.log(`statusCode: ${source.statusCode}`);
 
                     source.on('data', d1 => {
                         body += d1;
                         // process.stdout.write(d1)
                     });
                     source.on('error', error => {
-                        console.error(error)
+                        console.error(error);
+                        res.send(error);
+
                     });
                     source.on('end', end =>{
                         callback(null,JSON.parse(body))
@@ -56,12 +58,14 @@ app.listen(PORT, (err) => {
             function(callback) {
                 https.get(backupOptions, backup =>{
                     var body = ' ';
-                    console.log(`statusCode: ${backup.statusCode}`);
+                   // console.log(`statusCode: ${backup.statusCode}`);
                     backup.on('data', d1 => {
                         body += d1;
                     });
                     backup.on('error', error => {
-                        console.error(error)
+                        console.error(error);
+                        res.send(error);
+
                     });
                     backup.on('end', end =>{
                         callback(null,JSON.parse(body))
@@ -71,7 +75,7 @@ app.listen(PORT, (err) => {
             }
         ],
         function(err, results) {
-            console.log(results);
+           // console.log(results);
             var json = JSON.stringify( {
                 "streamId": "a",
                 "type": "exercise-1/streams",
@@ -88,16 +92,19 @@ app.listen(PORT, (err) => {
                 auth: backupToken,
             };
             var req = https.request(postOptions, post =>{
-                console.log(`statusCode: ${post.statusCode}`);
+             //   console.log(`statusCode: ${post.statusCode}`);
+                var body = ' ';
 
                 post.on('data', d1 => {
-                    res.send(d1);
+                    body += d1
                 });
                 post.on('error', error => {
-                    console.error(error)
+                    console.error(error);
+                    res.send(error);
                 });
                 post.on('end', end => {
-                    console.log(end)
+                //    console.log(end);
+                    res.send(JSON.parse(body));
                 });
             });
             req.write(json);
@@ -105,6 +112,6 @@ app.listen(PORT, (err) => {
         });
 
 });
- module.exports = app
+ module.exports = app;
 
 

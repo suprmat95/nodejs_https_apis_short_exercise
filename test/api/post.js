@@ -1,10 +1,13 @@
-const expect = require('chai');
+const chai = require('chai');
+const chaiHttp = require('chai-http');
 const index =  require('../../index')
-var request = require('supertest');
-
-describe('Post', function () {
+const should = chai.should();
+chai.use(chaiHttp);
+const expect = chai.expect;
+describe('Post', function ()  {
     it('Testing post', function (done) {
-        request(index).post('/data')
+        chai.request(index)
+            .post('/data')
             .send({
                 source: {
                     username: "sw-interview-source",
@@ -15,8 +18,14 @@ describe('Post', function () {
                     token: "ck5h1b5mw00jf1fd3s6e0vhie"
                 }
             })
-            .expect(200,done)
+            .end((err, res) => {
+                console.log('Error: '+ err); // outputs null
+                console.log(res.text); // outputs normal-looking response
+                expect(res).to.have.status(200);
+                expect(res.type,'application/json');
+                done();
+            });
 
     })
-    
-});
+
+})
