@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/test/api/post.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,6 +37,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../patmat" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
@@ -48,10 +53,47 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Mocha.Post">
     <configuration name="inndex" type="NodeJSConfigurationType" path-to-js-file="index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
+    <configuration name="Post" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test/api/post.js</test-file>
+      <test-names>
+        <name value="Post" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Post.Testing post" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/test/api/post.js</test-file>
+      <test-names>
+        <name value="Post" />
+        <name value="Testing post" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Mocha.Post" />
+        <item itemvalue="Mocha.Post.Testing post" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SbtLocalSettings">
     <option name="projectSyncType">
@@ -77,7 +119,9 @@
       <updated>1587984850939</updated>
       <workItem from="1587984852229" duration="12560000" />
       <workItem from="1588000564255" duration="2482000" />
-      <workItem from="1588006164191" duration="11166000" />
+      <workItem from="1588006164191" duration="12182000" />
+      <workItem from="1588195088600" duration="1000" />
+      <workItem from="1588262061033" duration="3669000" />
     </task>
     <task id="LOCAL-00001" summary="added response to caller">
       <created>1588179766632</created>
@@ -93,7 +137,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588182857553</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="bug fix json parsing streams">
+      <created>1588183090845</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1588183090845</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -104,7 +155,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -113,6 +166,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added response to caller" />
     <MESSAGE value="Used async Parallel" />
-    <option name="LAST_COMMIT_MESSAGE" value="Used async Parallel" />
+    <MESSAGE value="bug fix json parsing streams" />
+    <option name="LAST_COMMIT_MESSAGE" value="bug fix json parsing streams" />
   </component>
 </project>

@@ -6,12 +6,17 @@ var app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
-var port = 1234;
 
-app.get("/", function(req, res){
-    res.send("It works!");
+const PORT = 1234;
+
+app.listen(PORT, (err) => {
+    if (err) console.error(' Unable to connect the server: ', err);
+    console.log("Listening on port " + PORT);
 });
-app.post('/data', function (req, res) {
+
+ app.post('/data', function (req, res) {
+
+     console.log(req);
     var sourceUsername = req.body.source.username;
     var sourceToken = req.body.source.token;
     var backupUsername = req.body.backup.username;
@@ -52,7 +57,6 @@ app.post('/data', function (req, res) {
                 https.get(backupOptions, backup =>{
                     var body = ' ';
                     console.log(`statusCode: ${backup.statusCode}`);
-
                     backup.on('data', d1 => {
                         body += d1;
                     });
@@ -101,6 +105,6 @@ app.post('/data', function (req, res) {
         });
 
 });
+ module.exports = app
 
-app.listen(port);
-console.log("Listening on port " + port);
+
