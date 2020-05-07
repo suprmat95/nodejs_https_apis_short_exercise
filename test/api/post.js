@@ -20,7 +20,7 @@ describe('Post', function ()  {
             })
             .end((err, res) => {
              //   console.log('Error: ' + err); // outputs null
-               // console.log('Text ' + res.text); // outputs normal-looking response
+                console.log('Text ' + res.text); // outputs normal-looking response
                 expect(res).to.have.status(201);
                 expect(res.type,'application/json');
                 done();

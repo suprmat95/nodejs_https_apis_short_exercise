@@ -14,15 +14,15 @@ function postData(username, token, results, res) {
                      "type": "exercise-1/streams",
                      "content": [results]
                 };
-                console.log('POST:\n');
-                console.log(results)
+             //   console.log('POST:\n');
+             //   console.log(results)
                 superagent.agent()
                     .post('https://'+username + ".pryv.me/events?auth="+token)
                     .send(json)
                     .set('Content-Type', 'application/json')
                     .set('Content-Length', JSON.stringify(json).length)
                     .end((error, resp) => {
-                        console.log(resp);
+                      //  console.log(resp);
                         if(error)
                             res.send(error);
                         res.statusCode = resp.status;
@@ -32,18 +32,18 @@ function postData(username, token, results, res) {
 function intersection(a, b)
 {
 
-    if(a['id'] !== b['id'])
+    if(a.id !== b.id)
         return {};
     const obj = {};
-    obj['id'] = a['id'];
-    obj['parentId'] = a['parentId'];
-    obj['children'] = [];
+    obj.id = a.id;
+    obj.parentId = a.parentId;
+    obj.children = [];
     let c;
-    a['children'].forEach(e1 =>{
-        b['children'].forEach(e2 => {
+    a.children.forEach(e1 =>{
+        b.children.forEach(e2 => {
             c = intersection(e1, e2);
             if(!isEmptyObject(c))
-                obj['children'].push(c);
+                obj.children.push(c);
         });
     });
     return obj;
@@ -65,13 +65,13 @@ function getData(username, token, result) {
             .end((error, res) => {
 
                 if (!isEmptyObject(result)){
-                    console.log('RES22');
-                    console.log(res);
-                    console.log('RESULT');
-                    console.log(result);
-                    console.log('INTERSECTION');
+                   // console.log('RES22');
+                   // console.log(res);
+                   // console.log('RESULT');
+                   // console.log(result);
+                   // console.log('INTERSECTION');
                     res = intersection(JSON.parse(result).streams[0],JSON.parse(res.text).streams[0]);
-                    console.log(res);
+                   // console.log(res);
 
                     return  error ? reject(error) : resolve(res);
                 }
@@ -99,8 +99,8 @@ app.listen(PORT, (err) => {
     var promise = getData(sourceUsername, sourceToken, {});
 
      promise.then(function(result) {
-         console.log(' promise');
-         console.log(result)
+        // console.log(' promise');
+        // console.log(result)
          return getData(backupUsername, backupToken, result)
      }).then(function(result) {
          return postData(backupUsername, backupToken, result, res)
