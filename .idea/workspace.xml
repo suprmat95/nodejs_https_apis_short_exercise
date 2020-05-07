@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="">
+    <list default="true" id="3e658626-2b1c-43cf-8c10-32436b373a07" name="Default Changelist" comment="implemented intersection">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
@@ -36,7 +36,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="javascript.nodejs.core.library.configured.version" value="12.13.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../patmat" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../objsets" />
     <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -53,23 +53,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Mocha.Post">
+  <component name="RunManager" selected="Mocha.prova">
     <configuration name="inndex" type="NodeJSConfigurationType" path-to-js-file="index.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
-    <configuration name="Post" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
-      <working-directory>$PROJECT_DIR$</working-directory>
-      <pass-parent-env>true</pass-parent-env>
-      <ui>bdd</ui>
-      <extra-mocha-options />
-      <test-kind>SUITE</test-kind>
-      <test-file>$PROJECT_DIR$/test/api/post.js</test-file>
-      <test-names>
-        <name value="Post" />
-      </test-names>
+    <configuration name="prova" type="NodeJSConfigurationType" path-to-js-file="prova.js" working-dir="$PROJECT_DIR$">
       <method v="2" />
     </configuration>
     <configuration name="Post.Testing post" type="mocha-javascript-test-runner" temporary="true" nameIsGenerated="true">
@@ -88,9 +76,30 @@
       </test-names>
       <method v="2" />
     </configuration>
+    <configuration name="prova" type="mocha-javascript-test-runner" temporary="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <mocha-package>$PROJECT_DIR$/node_modules/mocha</mocha-package>
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>SUITE</test-kind>
+      <test-file>$PROJECT_DIR$/test/api/post.js</test-file>
+      <test-names>
+        <name value="Post" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Mocha.prova" />
+      <item itemvalue="Mocha.Post.Testing post" />
+      <item itemvalue="Node.js.prova" />
+      <item itemvalue="Node.js.inndex" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Mocha.Post" />
+        <item itemvalue="Mocha.prova" />
         <item itemvalue="Mocha.Post.Testing post" />
       </list>
     </recent_temporary>
@@ -175,6 +184,9 @@
     <MESSAGE value="Used async Parallel" />
     <MESSAGE value="bug fix json parsing streams" />
     <MESSAGE value="wrote a test" />
-    <option name="LAST_COMMIT_MESSAGE" value="wrote a test" />
+    <MESSAGE value="Bug fix" />
+    <MESSAGE value="implemented superagent and promit" />
+    <MESSAGE value="implemented intersection" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented intersection" />
   </component>
 </project>

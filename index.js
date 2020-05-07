@@ -1,13 +1,87 @@
 var express = require("express")
 var bodyParser = require('body-parser');
-const https = require('https');
-const async = require('async');
+var superagent = require('superagent');
+
 var app = express()
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(bodyParser.raw());
 
 const PORT = 1234;
+function postData(username, token, results, res) {
+                var json = {
+                     "streamId": "a",
+                     "type": "exercise-1/streams",
+                     "content": [results]
+                };
+                console.log('POST:\n');
+                console.log(results)
+                superagent.agent()
+                    .post('https://'+username + ".pryv.me/events?auth="+token)
+                    .send(json)
+                    .set('Content-Type', 'application/json')
+                    .set('Content-Length', JSON.stringify(json).length)
+                    .end((error, resp) => {
+                        console.log(resp);
+                        if(error)
+                            res.send(error);
+                        res.statusCode = resp.status;
+                        res.send(resp.text);
+                    });
+}
+function intersection(a, b)
+{
+
+    if(a['id'] !== b['id'])
+        return {};
+    const obj = {};
+    obj['id'] = a['id'];
+    obj['parentId'] = a['parentId'];
+    obj['children'] = [];
+    let c;
+    a['children'].forEach(e1 =>{
+        b['children'].forEach(e2 => {
+            c = intersection(e1, e2);
+            if(!isEmptyObject(c))
+                obj['children'].push(c);
+        });
+    });
+    return obj;
+}
+
+function isEmptyObject(obj) {
+    return !Object.keys(obj).length;
+}
+
+function getData(username, token, result) {
+    // Setting URL and headers for request
+    // Return new promise
+    return new Promise(function(resolve, reject) {
+        // Do async job
+        superagent.agent().get('https://'+username + ".pryv.me/streams?auth="+token)
+           // .auth(username, token,{type:'auto'})
+            .type('json')
+            .accept('json')
+            .end((error, res) => {
+
+                if (!isEmptyObject(result)){
+                    console.log('RES22');
+                    console.log(res);
+                    console.log('RESULT');
+                    console.log(result);
+                    console.log('INTERSECTION');
+                    res = intersection(JSON.parse(result).streams[0],JSON.parse(res.text).streams[0]);
+                    console.log(res);
+
+                    return  error ? reject(error) : resolve(res);
+                }
+                //result=result + res.text;
+               return  error ? reject(error) : resolve(res.text);
+            });
+
+    })
+}
+
 
 app.listen(PORT, (err) => {
     if (err) console.error(' Unable to connect the server: ', err);
@@ -21,95 +95,17 @@ app.listen(PORT, (err) => {
     var sourceToken = req.body.source.token;
     var backupUsername = req.body.backup.username;
     var backupToken = req.body.backup.token;
-    var sourceOptions = {
-        method: 'GET',
-        host: sourceUsername + ".pryv.me",
-        path: '/streams',
-        auth: sourceToken,
-    };
-    var backupOptions = {
-        method: 'GET',
-        host: backupUsername + ".pryv.me",
-        path: '/streams',
-        auth: backupToken,
-    };
-    async.parallel([
-            function(callback) {
-                https.get(sourceOptions, source =>{
-                    var body = ' ';
-                  //  console.log(`statusCode: ${source.statusCode}`);
 
-                    source.on('data', d1 => {
-                        body += d1;
-                        // process.stdout.write(d1)
-                    });
-                    source.on('error', error => {
-                        console.error(error);
-                        res.send(error);
+    var promise = getData(sourceUsername, sourceToken, {});
 
-                    });
-                    source.on('end', end =>{
-                        callback(null,JSON.parse(body))
+     promise.then(function(result) {
+         console.log(' promise');
+         console.log(result)
+         return getData(backupUsername, backupToken, result)
+     }).then(function(result) {
+         return postData(backupUsername, backupToken, result, res)
+     }).catch(err => { console.log(err)})
 
-                    });
-                });
-
-            },
-            function(callback) {
-                https.get(backupOptions, backup =>{
-                    var body = ' ';
-                   // console.log(`statusCode: ${backup.statusCode}`);
-                    backup.on('data', d1 => {
-                        body += d1;
-                    });
-                    backup.on('error', error => {
-                        console.error(error);
-                        res.send(error);
-
-                    });
-                    backup.on('end', end =>{
-                        callback(null,JSON.parse(body))
-                    });
-
-                });
-            }
-        ],
-        function(err, results) {
-           // console.log(results);
-            var json = JSON.stringify( {
-                "streamId": "a",
-                "type": "exercise-1/streams",
-                "content": [results]
-            });
-            var postOptions = {
-                method: 'POST',
-                host: backupUsername+".pryv.me",
-                path: '/events',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Content-Length': json.length
-                },
-                auth: backupToken,
-            };
-            var req = https.request(postOptions, post =>{
-             //   console.log(`statusCode: ${post.statusCode}`);
-                var body = ' ';
-
-                post.on('data', d1 => {
-                    body += d1
-                });
-                post.on('error', error => {
-                    console.error(error);
-                    res.send(error);
-                });
-                post.on('end', end => {
-                //    console.log(end);
-                    res.send(JSON.parse(body));
-                });
-            });
-            req.write(json);
-            req.end();
-        });
 
 });
  module.exports = app;
