@@ -1,1 +1,1 @@
-# pryv-http-api-exercise
+# nodejs-https-apis-exercise
